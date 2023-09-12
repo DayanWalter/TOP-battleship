@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Template',
+      title: 'Battleship',
       favicon: './src/images/favicon.ico',
       template: './src/template.html',
     }),
