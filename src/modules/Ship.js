@@ -18,7 +18,7 @@ class Ship {
 
   isSunk() {
     this.sank = true;
-    console.log('Ship destroyed');
+    console.log(`${this.type} destroyed!`);
   }
 
   shipType() {
@@ -31,7 +31,8 @@ class Ship {
     };
 
     if (this.length >= 1 && this.length <= 5) {
-      console.log(`Ship size ${this.length}`);
+      console.log(`Ship size: ${this.length}`);
+
       this.type = shipSizes[this.length];
     }
 

@@ -18,10 +18,13 @@ class Gameboard {
     for (let i = 0; i < length; i++) {
       this.grid[x][y + i] = ship;
     }
+
+    console.log('Ship placed');
   }
 
   receiveAttack(x, y) {
     let target = this.grid[x][y];
+
     if (target === undefined) {
       console.log(`Hit water at x:${x}, y:${y}.`);
       target = 'x';
@@ -34,8 +37,9 @@ class Gameboard {
     }
 
     if (target !== undefined) {
-      target.hit();
       console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
+
+      target.hit();
     }
   }
 }
