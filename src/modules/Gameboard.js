@@ -43,7 +43,7 @@ class Gameboard {
       return;
     }
 
-    if (target !== undefined && !this.set.has(coords)) {
+    if (target !== undefined) {
       console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
 
       this.set.add(coords);
