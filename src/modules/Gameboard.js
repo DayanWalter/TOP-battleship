@@ -11,8 +11,8 @@ class Gameboard {
 
   static createGrid() {
     const array = new Array(1);
-    for (let i = 0; i < 5; i += 1) {
-      array[i] = new Array(5);
+    for (let i = 0; i < 10; i += 1) {
+      array[i] = new Array(10);
     }
     return array;
   }
@@ -33,7 +33,7 @@ class Gameboard {
 
     // Field is already shot at
     if (this.set.has(coords)) {
-      console.log(`Coords at x:${x}, y:${y} are already shot at.`);
+      // console.log(`Coords at x:${x}, y:${y} are already shot at.`);
 
       // same player again
       return;
@@ -44,7 +44,7 @@ class Gameboard {
       this.set.add(coords);
       this.missedShots.add(coords);
 
-      console.log(`Hit water at x:${x}, y:${y}.`);
+      // console.log(`Hit water at x:${x}, y:${y}.`);
 
       this.grid[x][y] = 'x';
 
@@ -54,7 +54,7 @@ class Gameboard {
 
     // Field is a ship
     if (target !== undefined) {
-      console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
+      // console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
 
       this.set.add(coords);
       this.hitShots.add(coords);
@@ -62,13 +62,19 @@ class Gameboard {
       target.hit();
 
       // same player again
-      return;
     }
 
-    console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
+    // console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
   }
 
-  checkGameover() {}
+  checkGameover() {
+    // check every round?
+    if (this.hitShots.size >= 30) {
+      // the other player won
+      return true;
+    }
+    return false;
+  }
 }
 
 export default Gameboard;
