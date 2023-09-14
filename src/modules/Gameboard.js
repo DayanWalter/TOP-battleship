@@ -5,6 +5,10 @@ class Gameboard {
 
   set = new Set();
 
+  missedShots = new Set();
+
+  hitShots = new Set();
+
   static createGrid() {
     const array = new Array(1);
     for (let i = 0; i < 5; i += 1) {
@@ -27,34 +31,44 @@ class Gameboard {
     const target = this.grid[x][y];
     const coords = `${x},${y}`;
 
+    // Field is already shot at
     if (this.set.has(coords)) {
       console.log(`Coords at x:${x}, y:${y} are already shot at.`);
 
+      // same player again
       return;
     }
 
+    // Field is empty/water
     if (target === undefined) {
       this.set.add(coords);
+      this.missedShots.add(coords);
 
       console.log(`Hit water at x:${x}, y:${y}.`);
 
       this.grid[x][y] = 'x';
 
+      // next player
       return;
     }
 
+    // Field is a ship
     if (target !== undefined) {
       console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
 
       this.set.add(coords);
+      this.hitShots.add(coords);
 
       target.hit();
 
+      // same player again
       return;
     }
 
     console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
   }
+
+  checkGameover() {}
 }
 
 export default Gameboard;

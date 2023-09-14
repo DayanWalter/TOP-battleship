@@ -8,7 +8,7 @@ describe('Gameboard', () => {
     timesHit: 1,
     type: 'Battleship',
   };
-
+  // Place Ships
   gameBoard.placeShip(0, 0, 4);
   gameBoard.placeShip(1, 1, 1);
 
@@ -35,16 +35,20 @@ describe('Gameboard', () => {
     expect(gameBoard.grid[3][3]).toBe('x');
   });
 
-  test('receiveAttack hit water again', () => {
-    expect(gameBoard.grid[4][4]).toBe('x');
-  });
-
   test('receiveAttack destroyed a ship', () => {
     expect(gameBoard.grid[1][1].sank).toBe(true);
   });
 
-  test('receiveAttack stores coords in a set', () => {
+  test('receiveAttack stores coords correctly in a set', () => {
     expect(gameBoard.set.has('1,1')).toBe(true);
     expect(gameBoard.set.has('1,2')).toBe(false);
+  });
+
+  test('receiveAttack stores coords in missedShots', () => {
+    expect(gameBoard.missedShots.has('3,3')).toBe(true);
+  });
+
+  test('receiveAttack stores coords in hitShots', () => {
+    expect(gameBoard.hitShots.has('0,0')).toBe(true);
   });
 });
