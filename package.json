@@ -4,7 +4,7 @@
   "description": "My personal basic project template",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "webpack",
     "watch": "webpack --watch",
     "testWatch": "jest --watchAll",

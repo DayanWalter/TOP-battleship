@@ -5,7 +5,7 @@ class Gameboard {
 
   static createGrid() {
     const array = new Array(1);
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i += 1) {
       array[i] = new Array(5);
     }
     return array;
@@ -15,19 +15,18 @@ class Gameboard {
     const ship = new Ship(length);
     ship.shipType();
 
-    for (let i = 0; i < length; i++) {
+    // place ship horizontally from left to right
+    for (let i = 0; i < length; i += 1) {
       this.grid[x][y + i] = ship;
     }
-
-    console.log('Ship placed');
   }
 
   receiveAttack(x, y) {
-    let target = this.grid[x][y];
+    const target = this.grid[x][y];
 
     if (target === undefined) {
       console.log(`Hit water at x:${x}, y:${y}.`);
-      target = 'x';
+      this.grid[x][y] = 'x';
       return;
     }
 
