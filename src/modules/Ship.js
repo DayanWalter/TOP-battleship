@@ -31,8 +31,6 @@ class Ship {
     };
 
     if (this.length >= 1 && this.length <= 5) {
-      console.log(`Ship size: ${this.length}`);
-
       this.type = shipSizes[this.length];
     }
 

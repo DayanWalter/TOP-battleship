@@ -3,6 +3,8 @@ import Ship from './Ship';
 class Gameboard {
   grid = Gameboard.createGrid();
 
+  set = new Set();
+
   static createGrid() {
     const array = new Array(1);
     for (let i = 0; i < 5; i += 1) {
@@ -23,23 +25,35 @@ class Gameboard {
 
   receiveAttack(x, y) {
     const target = this.grid[x][y];
+    const coords = `${x},${y}`;
+
+    if (this.set.has(coords)) {
+      console.log(`Coords at x:${x}, y:${y} are already shot at.`);
+
+      return;
+    }
 
     if (target === undefined) {
+      this.set.add(coords);
+
       console.log(`Hit water at x:${x}, y:${y}.`);
+
       this.grid[x][y] = 'x';
+
       return;
     }
 
-    if (target.sank === true) {
-      console.log(`Ship at x:${x}, y:${y} already sank.`);
-      return;
-    }
-
-    if (target !== undefined) {
+    if (target !== undefined && !this.set.has(coords)) {
       console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
 
+      this.set.add(coords);
+
       target.hit();
+
+      return;
     }
+
+    console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
   }
 }
 
