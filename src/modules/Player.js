@@ -5,16 +5,16 @@ class Player {
     this.name = name;
   }
 
-  enemy = null;
+  opponent = null;
 
   gameboard = new Gameboard();
 
-  setEnemy(enemy) {
-    this.enemy = enemy;
+  setOpponent(opponent) {
+    this.opponent = opponent;
   }
 
   attacks(x, y) {
-    this.enemy.gameboard.receiveAttack(x, y);
+    this.opponent.gameboard.receiveAttack(x, y);
   }
 
   placeShip(x, y, length) {
