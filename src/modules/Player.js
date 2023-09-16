@@ -20,6 +20,13 @@ class Player {
   placeShip(x, y, length) {
     this.gameboard.placeShip(x, y, length);
   }
+
+  // getComputerChoice(){
+  //   const choice = ["Rock", "Paper", "Scissors"];
+  //   const random = Math.floor(Math.random() * choice.length);
+
+  //   return choice[random];
+  // };
 }
 
 export default Player;
