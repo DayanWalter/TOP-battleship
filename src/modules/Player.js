@@ -17,8 +17,22 @@ class Player {
     this.opponent.gameboard.receiveAttack(x, y);
   }
 
-  placeShip(x, y, length) {
-    this.gameboard.placeShip(x, y, length);
+  randomAttack() {
+    // generate random x
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
+    const attack = this.opponent.gameboard.receiveAttack(x, y);
+    console.log(x);
+    return attack;
+  }
+
+  placeShip(x, y, length, orientiation) {
+    if (orientiation === 'x') {
+      this.gameboard.placeShipLeftToRight(x, y, length);
+    }
+    if (orientiation === 'y') {
+      this.gameboard.placeShipUpToDown(x, y, length);
+    }
   }
 
   // getComputerChoice(){
