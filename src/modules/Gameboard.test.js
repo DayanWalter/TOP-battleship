@@ -8,17 +8,19 @@ const ship = {
   type: 'Carrier',
 };
 describe('placeShip', () => {
-  gameBoard.placeShip(0, 0, 5);
-  gameBoard.placeShip(1, 0, 4);
-  gameBoard.placeShip(2, 0, 4);
-  gameBoard.placeShip(3, 0, 3);
-  gameBoard.placeShip(4, 0, 3);
-  gameBoard.placeShip(5, 0, 3);
-  gameBoard.placeShip(6, 0, 2);
-  gameBoard.placeShip(7, 0, 2);
-  gameBoard.placeShip(8, 0, 2);
-  gameBoard.placeShip(9, 0, 1);
-  gameBoard.placeShip(9, 1, 1);
+  gameBoard.placeShipLeftToRight(0, 0, 5);
+  gameBoard.placeShipLeftToRight(1, 0, 4);
+  gameBoard.placeShipLeftToRight(2, 0, 4);
+  gameBoard.placeShipLeftToRight(3, 0, 3);
+  gameBoard.placeShipLeftToRight(4, 0, 3);
+  gameBoard.placeShipLeftToRight(5, 0, 3);
+  gameBoard.placeShipLeftToRight(6, 0, 2);
+  gameBoard.placeShipLeftToRight(7, 0, 2);
+  gameBoard.placeShipLeftToRight(8, 0, 2);
+  gameBoard.placeShipLeftToRight(9, 0, 1);
+  gameBoard.placeShipLeftToRight(9, 1, 1);
+
+  gameBoard.placeShipUpToDown(5, 9, 5);
 
   test('works correctly - left to right', () => {
     expect(gameBoard.grid[0][0]).toEqual(ship);
@@ -27,6 +29,10 @@ describe('placeShip', () => {
     expect(gameBoard.grid[0][3].type).toEqual('Carrier');
     expect(gameBoard.grid[0][5]).not.toEqual(ship);
   });
+
+  test('Up to down', () => {
+    expect(gameBoard.grid[5][9]).toEqual(ship);
+  });
 });
 describe('receiveAttack', () => {
   gameBoard.receiveAttack(0, 0);
@@ -34,7 +40,7 @@ describe('receiveAttack', () => {
   gameBoard.receiveAttack(2, 2);
   gameBoard.receiveAttack(2, 2);
   gameBoard.receiveAttack(3, 3);
-  gameBoard.receiveAttack(4, 4);
+  gameBoard.receiveAttack(5, 9);
 
   test('Hit ship', () => {
     expect(gameBoard.grid[0][0]).toEqual(ship);

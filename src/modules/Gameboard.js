@@ -17,13 +17,21 @@ class Gameboard {
     return array;
   }
 
-  placeShip(x, y, length) {
+  placeShipLeftToRight(x, y, length) {
     const ship = new Ship(length);
-    ship.shipType();
 
     // place ship horizontally from left to right
     for (let i = 0; i < length; i += 1) {
       this.grid[x][y + i] = ship;
+    }
+  }
+
+  placeShipUpToDown(x, y, length) {
+    const ship = new Ship(length);
+
+    // place ship vertically from up to down
+    for (let i = 0; i < length; i += 1) {
+      this.grid[x + i][y] = ship;
     }
   }
 
