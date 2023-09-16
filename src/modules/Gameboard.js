@@ -39,19 +39,10 @@ class Gameboard {
     const target = this.grid[x][y];
     const coords = `${x},${y}`;
 
-    // Field is already shot at
-    if (this.set.has(coords)) {
-      // console.log(`Coords at x:${x}, y:${y} are already shot at.`);
-
-      // same player again
-      return;
-    }
-
     // Field is empty/water
     if (target === undefined) {
       this.set.add(coords);
       this.missedShots.add(coords);
-
       // console.log(`Hit water at x:${x}, y:${y}.`);
 
       this.grid[x][y] = 'x';
