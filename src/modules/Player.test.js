@@ -20,8 +20,8 @@ player2.setOpponent(player1);
 
 describe('Player places ships', () => {
   beforeAll(() => {
-    player1.placeShip(0, 0, 5);
-    player2.placeShip(0, 0, 5);
+    player1.placeShip(0, 0, 5, 'x');
+    player2.placeShip(0, 0, 5, 'x');
   });
 
   test('player1', () => {
@@ -33,14 +33,14 @@ describe('Player places ships', () => {
   });
 });
 
-describe('Player attacks', () => {
+describe('Player attack', () => {
   beforeAll(() => {
-    player2.placeShip(1, 1, 4);
-    player1.attacks(1, 1);
-    player1.attacks(1, 2);
-    player1.placeShip(1, 1, 4);
-    player2.attacks(1, 1);
-    player2.attacks(1, 2);
+    player2.placeShip(1, 1, 4, 'x');
+    player1.attack(1, 1);
+    player1.attack(1, 2);
+    player1.placeShip(1, 1, 4, 'x');
+    player2.attack(1, 1);
+    player2.attack(1, 2);
   });
 
   test('player1 -> player2', () => {

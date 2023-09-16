@@ -13,12 +13,11 @@ class Player {
     this.opponent = opponent;
   }
 
-  attacks(x, y) {
+  attack(x, y) {
     this.opponent.gameboard.receiveAttack(x, y);
   }
 
-  randomAttack() {
-    // generate random x
+  attackRandom() {
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
     const attack = this.opponent.gameboard.receiveAttack(x, y);
@@ -26,11 +25,27 @@ class Player {
     return attack;
   }
 
-  placeShip(x, y, length, orientiation) {
-    if (orientiation === 'x') {
+  placeShip(x, y, length, orientation) {
+    if (orientation === 'x') {
       this.gameboard.placeShipLeftToRight(x, y, length);
     }
-    if (orientiation === 'y') {
+    if (orientation === 'y') {
+      this.gameboard.placeShipUpToDown(x, y, length);
+    }
+  }
+
+  placeShipRandom(length) {
+    const choices = ['x', 'y'];
+    const orientation = choices[Math.floor(Math.random() * choices.length)];
+    console.log(orientation);
+    if (orientation === 'x') {
+      const x = Math.floor(Math.random() * 10);
+      const y = Math.floor(Math.random() * 10);
+      this.gameboard.placeShipLeftToRight(x, y, length);
+    }
+    if (orientation === 'y') {
+      const x = Math.floor(Math.random() * 10);
+      const y = Math.floor(Math.random() * 10);
       this.gameboard.placeShipUpToDown(x, y, length);
     }
   }
