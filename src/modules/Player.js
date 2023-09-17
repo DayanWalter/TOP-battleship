@@ -13,66 +13,54 @@ class Player {
     this.opponent = opponent;
   }
 
-  // HERE!
   attack(x, y) {
     console.log(`${this.name} attacks ${x}, ${y}`);
-    // ...attack gameboard of computer
+    // Attack gameboard of computer
     this.opponent.gameboard.receiveAttack(x, y);
 
     // if attack was a hit...
     if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
       console.log(`${this.name} hit at ${x},${y}`);
-      // attack again
+      // ...attack again
       return;
     }
 
-    // if attack was a missedShot
+    // if attack was a missedShot...
     if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
       console.log(`${this.name} missed at ${x},${y}`);
-      // computer attacks
+      // ...computer attacks
       this.opponent.attackRandom();
     }
   }
 
   attackRandom() {
+    // Generate random x and y
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
 
+    // if coords not in set...
     if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
-      console.log(`Coords: ${x},${y} ARE NOT in Set`);
-      // attack player
+      // ...attack player
       this.opponent.gameboard.receiveAttack(x, y);
-      // if hit, attack again
+      // if hit...
       if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
-        console.log(`${this.name} hit at ${x},${y}`);
-        // attack again
+        // ...attack again
         this.opponent.attackRandom();
       }
 
-      // if attack was a missedShot
+      // if missed...
       if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
-        console.log(`${this.name} missed at ${x},${y}`);
-        // players turn
+        // ...players turn
         return;
       }
     }
 
-    console.log(`Computer attacks randomly: ${x}, ${y}`);
+    // if coords ARE in set
     if (this.opponent.gameboard.set.has(`${x},${y}`)) {
-      console.log(`Coords: ${x},${y} ARE in Set`);
+      // call attack recursivly and start over
       this.attackRandom();
     }
-
-    // player1 attack
   }
-
-  // if (this.opponent.gameboard.set.has(`${x},${y}`)) {
-  //   const x = Math.floor(Math.random() * 10);
-  //   const y = Math.floor(Math.random() * 10);
-  //   this.opponent.gameboard.receiveAttack(x, y);
-  //   // next player
-  // }
-  // attack again
 
   placeShip(x, y, length, orientation) {
     if (orientation === 'x') {
@@ -83,22 +71,51 @@ class Player {
     }
   }
 
-  // LOOK INTO
   placeShipRandom(length) {
-    const choices = ['x', 'y'];
-    const random = Math.floor(Math.random());
-    const orientation = choices[random * choices.length];
-    console.log(orientation);
-    if (orientation === 'x') {
-      const x = random * 10;
-      const y = random * 10;
-      this.gameboard.placeShipLeftToRight(x, y, length);
-    }
-    if (orientation === 'y') {
-      const x = random * 10;
-      const y = random * 10;
-      this.gameboard.placeShipUpToDown(x, y, length);
-    }
+    // const choices = ['x', 'y'];
+    // const random = Math.floor(Math.random());
+    // const orientation = choices[random * choices.length];
+
+    // console.log(orientation);
+
+    // if (orientation === 'x') {
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
+    this.gameboard.placeShipLeftToRight(x, y, length);
+    // }
+    // if (orientation === 'y') {
+    //   const x = random * 10;
+    //   const y = random * 10;
+    //   this.gameboard.placeShipUpToDown(x, y, length);
+    // }
+  }
+
+  placeStatic() {
+    this.placeShip(0, 0, 5, 'x');
+    this.placeShip(1, 0, 4, 'x');
+    this.placeShip(2, 0, 4, 'x');
+    this.placeShip(3, 0, 3, 'x');
+    this.placeShip(4, 0, 3, 'x');
+    this.placeShip(5, 0, 3, 'x');
+    this.placeShip(6, 0, 2, 'x');
+    this.placeShip(7, 0, 2, 'x');
+    this.placeShip(8, 0, 2, 'x');
+    this.placeShip(9, 0, 1, 'x');
+    this.placeShip(9, 1, 1, 'x');
+  }
+
+  placeStaticRandom() {
+    this.placeShip(0, 0, 5, 'x');
+    this.placeShip(1, 0, 4, 'x');
+    this.placeShip(2, 0, 4, 'x');
+    this.placeShip(3, 0, 3, 'x');
+    this.placeShip(4, 0, 3, 'x');
+    this.placeShip(5, 0, 3, 'x');
+    this.placeShip(6, 0, 2, 'x');
+    this.placeShip(7, 0, 2, 'x');
+    this.placeShip(8, 0, 2, 'x');
+    this.placeShip(9, 0, 1, 'x');
+    this.placeShip(9, 1, 1, 'x');
   }
 
   // getComputerChoice(){

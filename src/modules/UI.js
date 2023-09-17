@@ -2,13 +2,25 @@ import game from './Game';
 
 class UI {
   static displayInHtml(player1, player2) {
-    const human = player1;
+    const player = player1;
     const computer = player2;
 
     // display boards in html/DOM
-    const humanBoard = human.gameboard.grid;
+    const humanBoard = player.gameboard.grid;
     const computerBoard = computer.gameboard.grid;
 
+    const grid = document.getElementById('grid');
+
+    for (let i = 0; i < 10; i += 1) {
+      // create rows
+      const row = document.createElement('tr');
+      for (let j = 0; j < 10; j += 1) {
+        // create cells
+        const cell = document.createElement('td');
+        row.append(cell);
+      }
+      grid.append(row);
+    }
     console.log(humanBoard);
   }
   //
