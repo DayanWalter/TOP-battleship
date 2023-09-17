@@ -20,9 +20,9 @@ function game() {
   // display boards in html
   UI.displayInHtml(player, computer);
 
-  player.attack(0, 0);
+  // player.attack(0, 0);
   // // render board with Gameboard class
-  UI.displayInHtml(player, computer);
+  // UI.displayInHtml(player, computer);
 
   // UI.renderBoard(player, computer);
 

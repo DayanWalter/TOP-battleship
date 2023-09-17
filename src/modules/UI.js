@@ -16,6 +16,7 @@ class UI {
     // display boards in html/DOM
     UI.displayBoard(playerBoard, playerID);
     UI.displayBoard(computerBoard, computerID);
+    UI.attackOnClick(player, computer);
   }
 
   static displayBoard(board, id) {
@@ -26,6 +27,7 @@ class UI {
       const row = document.createElement('tr');
       for (let j = 0; j <= 9; j += 1) {
         const cell = document.createElement('td');
+        cell.setAttribute('id', `${id}${i}${j}`);
 
         // if board[index][index] is !0, set innerHTML to .value of object
         if (board[i][j] !== 0) {
@@ -47,6 +49,18 @@ class UI {
 
       grid.append(row);
     }
+
+    // Add all eventlistener
+  }
+
+  static attackOnClick(player, computer) {
+    // addeventlistener on click
+    // attack on click
+    const field = document.getElementById('computerBoard00');
+    field.addEventListener('click', () => {
+      console.log('Wokrs?');
+      UI.displayInHtml(player, computer);
+    });
   }
 
   // static renderBoard(player1, player2) {}
