@@ -5,68 +5,41 @@ class UI {
     const player = player1;
     const computer = player2;
 
-    // display boards in html/DOM
+    // get boards
     const playerBoard = player.gameboard.grid;
     const computerBoard = computer.gameboard.grid;
 
-    UI.displayPlayerGrid(playerBoard);
-    UI.displayComputerGrid(computerBoard);
+    // define ID from html
+    const playerID = 'playerBoard';
+    const computerID = 'computerBoard';
+
+    // display boards in html/DOM
+    UI.displayBoard(playerBoard, playerID);
+    UI.displayBoard(computerBoard, computerID);
   }
 
   // take loop into separate function DRY
-  static displayPlayerGrid(playerBoard) {
-    const playerGrid = document.getElementById('playerGrid');
+  static displayBoard(board, id) {
+    const grid = document.getElementById(`${id}`);
 
     for (let i = 0; i < 10; i += 1) {
-      // create rows
       const row = document.createElement('tr');
       for (let j = 0; j < 10; j += 1) {
-        // create cells
         const cell = document.createElement('td');
-        cell.setAttribute('id', `${i}${j}`);
-
-        // if playerBoard[index][index] is !0, set innerHTML to .value of object
-        if (playerBoard[i][j] !== 0) {
-          cell.innerHTML = playerBoard[i][j].value;
-        }
-        // if playerBoard[index][index] is 0, set innerHtml to 0
-        if (playerBoard[i][j] === 0) {
-          cell.innerHTML = playerBoard[i][j];
-        }
-
-        console.log(playerBoard[i][j]);
-
-        row.append(cell);
-      }
-      playerGrid.append(row);
-    }
-  }
-
-  static displayComputerGrid(computerBoard) {
-    const computerGrid = document.getElementById('computerGrid');
-
-    for (let i = 0; i < 10; i += 1) {
-      // create rows
-      const row = document.createElement('tr');
-      for (let j = 0; j < 10; j += 1) {
-        // create cells
-        const cell = document.createElement('td');
-        cell.setAttribute('id', `${i}${j}`);
 
         // if board[index][index] is !0, set innerHTML to .value of object
-        if (computerBoard[i][j] !== 0) {
-          cell.innerHTML = computerBoard[i][j].value;
+        if (board[i][j] !== 0) {
+          cell.innerHTML = board[i][j].value;
         }
         // if board[index][index] is 0, set innerHtml to 0
-        if (computerBoard[i][j] === 0) {
-          cell.innerHTML = computerBoard[i][j];
+        if (board[i][j] === 0) {
+          cell.innerHTML = board[i][j];
         }
-
-        console.log(computerBoard[i][j]);
 
         row.append(cell);
       }
-      computerGrid.append(row);
+
+      grid.append(row);
     }
   }
 }
