@@ -18,13 +18,13 @@ class UI {
     UI.displayBoard(computerBoard, computerID);
   }
 
-  // take loop into separate function DRY
   static displayBoard(board, id) {
     const grid = document.getElementById(`${id}`);
+    grid.innerHTML = '';
 
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i <= 9; i += 1) {
       const row = document.createElement('tr');
-      for (let j = 0; j < 10; j += 1) {
+      for (let j = 0; j <= 9; j += 1) {
         const cell = document.createElement('td');
 
         // if board[index][index] is !0, set innerHTML to .value of object
@@ -33,7 +33,13 @@ class UI {
         }
         // if board[index][index] is 0, set innerHtml to 0
         if (board[i][j] === 0) {
-          cell.innerHTML = board[i][j];
+          cell.innerHTML = 0;
+        }
+        if (board[i][j] === 'x') {
+          cell.innerHTML = 'XXX';
+        }
+        if (board[i][j] === 'hit') {
+          cell.innerHTML = 'HIT';
         }
 
         row.append(cell);
@@ -42,6 +48,8 @@ class UI {
       grid.append(row);
     }
   }
+
+  // static renderBoard(player1, player2) {}
 }
 
 export default UI;

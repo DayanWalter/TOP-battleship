@@ -41,15 +41,20 @@ class Player {
     // if coords not in set...
     if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
       // ...attack player
+      console.log(`${this.name} attacks ${x}, ${y}`);
       this.opponent.gameboard.receiveAttack(x, y);
       // if hit...
       if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
+        console.log(`${this.name} hit at ${x},${y}`);
+
         // ...attack again
-        this.opponent.attackRandom();
+        this.attackRandom();
       }
 
       // if missed...
       if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
+        console.log(`${this.name} missed at ${x},${y}`);
+
         // ...players turn
         return;
       }

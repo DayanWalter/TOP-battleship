@@ -40,9 +40,11 @@ class Gameboard {
     const coords = `${x},${y}`;
 
     // Field is empty/water
-    if (target === undefined) {
+    if (target === 0) {
       this.set.add(coords);
       this.missedShots.add(coords);
+      console.log(target);
+
       // console.log(`Hit water at x:${x}, y:${y}.`);
 
       this.grid[x][y] = 'x';
@@ -57,8 +59,9 @@ class Gameboard {
 
       this.set.add(coords);
       this.hitShots.add(coords);
-
+      console.log(target);
       target.hit();
+      this.grid[x][y] = 'hit';
 
       // same player again
     }

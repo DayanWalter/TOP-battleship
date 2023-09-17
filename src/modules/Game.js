@@ -3,7 +3,7 @@ import UI from './UI';
 
 function game() {
   // initialize player
-  const player = new Player('Human');
+  const player = new Player('Player');
   const computer = new Player('Computer');
 
   // set opponents
@@ -17,9 +17,14 @@ function game() {
   // computer
   computer.placeStaticRandom();
 
+  // display boards in html
   UI.displayInHtml(player, computer);
 
-  // display boards in html
+  player.attack(0, 0);
+  // // render board with Gameboard class
+  UI.displayInHtml(player, computer);
+
+  // UI.renderBoard(player, computer);
 
   // while(player1.hitShots <= 30 && player2.hitShots <= 30){
   // player1.attacks(0,0)
