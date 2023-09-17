@@ -15,33 +15,54 @@ class Player {
 
   // HERE!
   attack(x, y) {
-    console.log(`Player attacks ${x}, ${y}`);
-    // if coords are not in set...
-    if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
-      // ...attack gameboard of computer
-      this.opponent.gameboard.receiveAttack(x, y);
-      // if attack was a hit...
+    console.log(`${this.name} attacks ${x}, ${y}`);
+    // ...attack gameboard of computer
+    this.opponent.gameboard.receiveAttack(x, y);
+
+    // if attack was a hit...
+    if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
+      console.log(`${this.name} hit at ${x},${y}`);
       // attack again
-      // if attack was a missedShot
-      // next player
-      return this.opponent.attackRandom();
+      return;
     }
-    return 'Try again';
+
+    // if attack was a missedShot
+    if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
+      console.log(`${this.name} missed at ${x},${y}`);
+      // computer attacks
+      this.opponent.attackRandom();
+    }
   }
 
   attackRandom() {
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
+
+    if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
+      console.log(`Coords: ${x},${y} ARE NOT in Set`);
+      // attack player
+      this.opponent.gameboard.receiveAttack(x, y);
+      // if hit, attack again
+      if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
+        console.log(`${this.name} hit at ${x},${y}`);
+        // attack again
+        this.opponent.attackRandom();
+      }
+
+      // if attack was a missedShot
+      if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
+        console.log(`${this.name} missed at ${x},${y}`);
+        // players turn
+        return;
+      }
+    }
+
     console.log(`Computer attacks randomly: ${x}, ${y}`);
     if (this.opponent.gameboard.set.has(`${x},${y}`)) {
       console.log(`Coords: ${x},${y} ARE in Set`);
       this.attackRandom();
     }
 
-    if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
-      console.log(`Coords: ${x},${y} ARE NOT in Set`);
-      this.opponent.gameboard.receiveAttack(x, y);
-    }
     // player1 attack
   }
 

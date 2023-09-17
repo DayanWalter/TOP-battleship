@@ -1,6 +1,6 @@
 import Player from './Player';
 
-const player1 = new Player('Pete');
+const player1 = new Player('Player');
 const player2 = new Player('Computer');
 const ship = {
   length: 5,
@@ -59,74 +59,76 @@ describe('Player tries to shoot multiple times on the same coords', () => {
 
   test('Player1 -> Player2', () => {
     // expect(player1.attack(2, 5)).toEqual('Next Player');
-    // expect(player1.attack(2, 5)).toEqual('Try again');
+    expect(player1.attack(2, 1)).toEqual('Try again');
   });
   // console.log(player2.attackRandom());
-  player1.attack(0, 0);
-  player1.attack(0, 1);
-  player1.attack(0, 2);
-  player1.attack(0, 3);
-  player1.attack(0, 4);
-  player1.attack(0, 5);
-  player1.attack(0, 6);
-  player1.attack(0, 7);
-  player1.attack(0, 8);
-  player1.attack(0, 9);
-
-  player1.attack(1, 0);
-  player1.attack(1, 1);
-  player1.attack(1, 2);
-  player1.attack(1, 3);
-  player1.attack(1, 4);
-  player1.attack(1, 5);
-  player1.attack(1, 6);
-  player1.attack(1, 7);
-  player1.attack(1, 8);
-  player1.attack(1, 9);
-
-  player1.attack(2, 0);
-  player1.attack(2, 1);
-  player1.attack(2, 2);
-  player1.attack(2, 3);
-  player1.attack(2, 4);
   player1.attack(2, 5);
-  player1.attack(2, 6);
-  player1.attack(2, 7);
-  player1.attack(2, 8);
-  player1.attack(2, 9);
+  // player1.attack(0, 0);
 
-  player1.attack(3, 0);
-  player1.attack(3, 1);
-  player1.attack(3, 2);
-  player1.attack(3, 3);
-  player1.attack(3, 4);
-  player1.attack(3, 5);
-  player1.attack(3, 6);
-  player1.attack(3, 7);
-  player1.attack(3, 8);
-  player1.attack(3, 9);
+  // player1.attack(0, 1);
+  // player1.attack(0, 2);
+  // player1.attack(0, 3);
+  // player1.attack(0, 4);
+  // player1.attack(0, 5);
+  // player1.attack(0, 6);
+  // player1.attack(0, 7);
+  // player1.attack(0, 8);
+  // player1.attack(0, 9);
 
-  player1.attack(4, 0);
-  player1.attack(4, 1);
-  player1.attack(4, 2);
-  player1.attack(4, 3);
-  player1.attack(4, 4);
-  player1.attack(4, 5);
-  player1.attack(4, 6);
-  player1.attack(4, 7);
-  player1.attack(4, 8);
-  player1.attack(4, 9);
+  // player1.attack(1, 0);
+  // player1.attack(1, 1);
+  // player1.attack(1, 2);
+  // player1.attack(1, 3);
+  // player1.attack(1, 4);
+  // player1.attack(1, 5);
+  // player1.attack(1, 6);
+  // player1.attack(1, 7);
+  // player1.attack(1, 8);
+  // player1.attack(1, 9);
 
-  player1.attack(5, 0);
-  player1.attack(5, 1);
-  player1.attack(5, 2);
-  player1.attack(5, 3);
-  player1.attack(5, 4);
-  player1.attack(5, 5);
-  player1.attack(5, 6);
-  player1.attack(5, 7);
-  player1.attack(5, 8);
-  player1.attack(5, 9);
+  // player1.attack(2, 0);
+  // player1.attack(2, 1);
+  // player1.attack(2, 2);
+  // player1.attack(2, 3);
+  // player1.attack(2, 4);
+  // player1.attack(2, 5);
+  // player1.attack(2, 6);
+  // player1.attack(2, 7);
+  // player1.attack(2, 8);
+  // player1.attack(2, 9);
+
+  // player1.attack(3, 0);
+  // player1.attack(3, 1);
+  // player1.attack(3, 2);
+  // player1.attack(3, 3);
+  // player1.attack(3, 4);
+  // player1.attack(3, 5);
+  // player1.attack(3, 6);
+  // player1.attack(3, 7);
+  // player1.attack(3, 8);
+  // player1.attack(3, 9);
+
+  // player1.attack(4, 0);
+  // player1.attack(4, 1);
+  // player1.attack(4, 2);
+  // player1.attack(4, 3);
+  // player1.attack(4, 4);
+  // player1.attack(4, 5);
+  // player1.attack(4, 6);
+  // player1.attack(4, 7);
+  // player1.attack(4, 8);
+  // player1.attack(4, 9);
+
+  // player1.attack(5, 0);
+  // player1.attack(5, 1);
+  // player1.attack(5, 2);
+  // player1.attack(5, 3);
+  // player1.attack(5, 4);
+  // player1.attack(5, 5);
+  // player1.attack(5, 6);
+  // player1.attack(5, 7);
+  // player1.attack(5, 8);
+  // player1.attack(5, 9);
 
   // player1.attack(6, 0);
   // player1.attack(6, 1);
