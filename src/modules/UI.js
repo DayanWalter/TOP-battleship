@@ -19,7 +19,15 @@ class UI {
         // create cells
         const cell = document.createElement('td');
         cell.setAttribute('id', `${i}${j}`);
-        cell.innerHTML = humanBoard[i][j];
+
+        if (humanBoard[i][j] !== 0) {
+          cell.innerHTML = humanBoard[i][j].value;
+        }
+
+        if (humanBoard[i][j] === 0) {
+          cell.innerHTML = humanBoard[i][j];
+        }
+
         console.log(humanBoard[i][j]);
 
         row.append(cell);
