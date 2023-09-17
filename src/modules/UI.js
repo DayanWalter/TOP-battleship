@@ -13,15 +13,20 @@ class UI {
 
     for (let i = 0; i < 10; i += 1) {
       // create rows
+      // console.log(humanBoard[i]);
       const row = document.createElement('tr');
       for (let j = 0; j < 10; j += 1) {
         // create cells
         const cell = document.createElement('td');
+        cell.setAttribute('id', `${i}${j}`);
+        cell.innerHTML = humanBoard[i][j];
+        console.log(humanBoard[i][j]);
+
         row.append(cell);
       }
       grid.append(row);
     }
-    console.log(humanBoard);
+    // console.log(humanBoard[0]);
   }
   //
 }

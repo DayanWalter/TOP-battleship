@@ -12,7 +12,7 @@ class Gameboard {
   static createGrid() {
     const array = new Array(1);
     for (let i = 0; i < 10; i += 1) {
-      array[i] = new Array(10);
+      array[i] = new Array(10).fill(0);
     }
     return array;
   }
