@@ -16,7 +16,7 @@ class UI {
     // display boards in html/DOM
     UI.displayBoard(playerBoard, playerID);
     UI.displayBoard(computerBoard, computerID);
-    UI.attackOnClick(player, computer);
+    UI.attackOnClick(player);
   }
 
   static displayBoard(board, id) {
@@ -49,21 +49,21 @@ class UI {
 
       grid.append(row);
     }
-
-    // Add all eventlistener
   }
 
-  static attackOnClick(player, computer) {
-    // addeventlistener on click
-    // attack on click
-    const field = document.getElementById('computerBoard00');
-    field.addEventListener('click', () => {
-      console.log('Wokrs?');
-      UI.displayInHtml(player, computer);
+  static attackOnClick(player) {
+    const fields = document.querySelectorAll('td');
+    fields.forEach((field) => {
+      field.addEventListener('click', (e) => {
+        const ID = e.target.id;
+
+        const x = ID.slice(-2, -1);
+        const y = ID.slice(-1);
+
+        player.attack(x, y);
+      });
     });
   }
-
-  // static renderBoard(player1, player2) {}
 }
 
 export default UI;
