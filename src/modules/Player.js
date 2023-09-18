@@ -22,6 +22,7 @@ class Player {
     if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
       console.log(`${this.name} hit at ${x},${y}`);
       // ...attack again
+      console.log(this.opponent.gameboard.hitShots);
       return;
     }
 
@@ -48,6 +49,7 @@ class Player {
         console.log(`${this.name} hit at ${x},${y}`);
 
         // ...attack again
+
         this.attackRandom();
       }
 

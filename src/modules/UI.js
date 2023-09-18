@@ -16,7 +16,7 @@ class UI {
     // display boards in html/DOM
     UI.displayBoard(playerBoard, playerID);
     UI.displayBoard(computerBoard, computerID);
-    UI.attackOnClick(player);
+    UI.attackOnClick(player, computer);
   }
 
   static displayBoard(board, id) {
@@ -51,7 +51,7 @@ class UI {
     }
   }
 
-  static attackOnClick(player) {
+  static attackOnClick(player, computer) {
     const fields = document.querySelectorAll('td');
     fields.forEach((field) => {
       field.addEventListener('click', (e) => {
@@ -61,8 +61,26 @@ class UI {
         const y = ID.slice(-1);
 
         player.attack(x, y);
+        UI.displayInHtml(player, computer);
+
+        // Timeout for later :)
+        // setTimeout(() => {
+        //   console.log('Delayed for 1 second.');
+        //   UI.displayInHtml(player, computer);
+        // }, 1000);
       });
     });
+  }
+
+  static checkWinner(player, computer) {
+    setInterval(() => {
+      if (player.gameboard.checkGameover()) {
+        console.log('Computer won!');
+      }
+      if (computer.gameboard.checkGameover()) {
+        console.log('Player won!');
+      }
+    }, 1000);
   }
 }
 

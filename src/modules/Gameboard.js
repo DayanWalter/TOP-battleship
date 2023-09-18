@@ -53,6 +53,11 @@ class Gameboard {
       return;
     }
 
+    if (target === 'x' || target === 'hit') {
+      console.log('ALREADY SHOT AT X!!!');
+      return;
+    }
+
     // Field is a ship
     if (target !== undefined) {
       // console.log(`Hit ${target.type} at x:${x}, y:${y}!`);
@@ -71,7 +76,7 @@ class Gameboard {
 
   checkGameover() {
     // check every round?
-    if (this.hitShots.size >= 30) {
+    if (this.hitShots.size >= 5) {
       // the other player won
       return true;
     }
