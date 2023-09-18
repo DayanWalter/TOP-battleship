@@ -79,22 +79,9 @@ class Player {
   }
 
   placeShipRandom(length) {
-    // const choices = ['x', 'y'];
-    // const random = Math.floor(Math.random());
-    // const orientation = choices[random * choices.length];
-
-    // console.log(orientation);
-
-    // if (orientation === 'x') {
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
     this.gameboard.placeShipLeftToRight(x, y, length);
-    // }
-    // if (orientation === 'y') {
-    //   const x = random * 10;
-    //   const y = random * 10;
-    //   this.gameboard.placeShipUpToDown(x, y, length);
-    // }
   }
 
   placeStatic() {
@@ -124,13 +111,6 @@ class Player {
     this.placeShip(9, 5, 1, 'x');
     this.placeShip(9, 7, 1, 'x');
   }
-
-  // getComputerChoice(){
-  //   const choice = ["Rock", "Paper", "Scissors"];
-  //   const random = Math.floor(Math.random() * choice.length);
-
-  //   return choice[random];
-  // };
 }
 
 export default Player;

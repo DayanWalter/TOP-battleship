@@ -1,5 +1,3 @@
-import game from './Game';
-
 class UI {
   static displayInHtml(player1, player2) {
     const player = player1;
@@ -10,12 +8,12 @@ class UI {
     const computerBoard = computer.gameboard.grid;
 
     // define ID from html
-    const playerID = 'playerBoard';
-    const computerID = 'computerBoard';
+    const playerBoardID = 'playerBoard';
+    const computerBoardID = 'computerBoard';
 
     // display boards in html/DOM
-    UI.displayBoard(playerBoard, playerID);
-    UI.displayBoard(computerBoard, computerID);
+    UI.displayBoard(playerBoard, playerBoardID);
+    UI.displayBoard(computerBoard, computerBoardID);
     UI.attackOnClick(player, computer);
   }
 
@@ -36,10 +34,10 @@ class UI {
           cell.innerHTML = board[i][j].value;
         }
         // if board[index][index] is 0, set innerHtml to 0
-        if (board[i][j] === 0) {
+        if (board[i][j].length === 0) {
           // cell.innerHTML = 0;
         }
-        if (board[i][j] === 'x') {
+        if (board[i][j] === 'missed') {
           cell.innerHTML = 'XXX';
         }
         if (board[i][j] === 'hit') {

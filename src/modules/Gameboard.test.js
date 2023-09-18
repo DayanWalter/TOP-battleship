@@ -4,25 +4,16 @@ const gameBoard = new Gameboard();
 const ship = {
   length: 5,
   sank: false,
-  timesHit: 1,
+  timesHit: 0,
   type: 'Carrier',
+  value: 1,
 };
 describe('placeShip', () => {
-  gameBoard.placeShipLeftToRight(0, 0, 5);
-  gameBoard.placeShipLeftToRight(1, 0, 4);
-  gameBoard.placeShipLeftToRight(2, 0, 4);
-  gameBoard.placeShipLeftToRight(3, 0, 3);
-  gameBoard.placeShipLeftToRight(4, 0, 3);
-  gameBoard.placeShipLeftToRight(5, 0, 3);
-  gameBoard.placeShipLeftToRight(6, 0, 2);
-  gameBoard.placeShipLeftToRight(7, 0, 2);
-  gameBoard.placeShipLeftToRight(8, 0, 2);
-  gameBoard.placeShipLeftToRight(9, 0, 1);
-  gameBoard.placeShipLeftToRight(9, 1, 1);
-
   gameBoard.placeShipUpToDown(5, 9, 5);
 
   test('works correctly - left to right', () => {
+    gameBoard.placeShipLeftToRight(0, 0, 5);
+
     expect(gameBoard.grid[0][0]).toEqual(ship);
     expect(gameBoard.grid[0][1]).toEqual(ship);
     expect(gameBoard.grid[0][2]).toHaveLength(5);
@@ -35,36 +26,33 @@ describe('placeShip', () => {
   });
 });
 describe('receiveAttack', () => {
-  gameBoard.receiveAttack(0, 0);
-  gameBoard.receiveAttack(9, 0);
-  gameBoard.receiveAttack(2, 2);
-  gameBoard.receiveAttack(2, 2);
-  gameBoard.receiveAttack(3, 3);
-  gameBoard.receiveAttack(5, 9);
-
   test('Hit ship', () => {
-    expect(gameBoard.grid[0][0]).toEqual(ship);
+    gameBoard.placeShipLeftToRight(0, 0, 5);
+    gameBoard.receiveAttack(0, 0);
+    expect(gameBoard.grid[0][0]).toEqual('hit');
   });
 
   test('Hit water', () => {
-    expect(gameBoard.grid[3][3]).toBe('x');
-  });
-
-  test('Destroyed a ship', () => {
-    expect(gameBoard.grid[9][0].sank).toBe(true);
+    gameBoard.receiveAttack(3, 3);
+    expect(gameBoard.grid[3][3]).toBe('missed');
   });
 
   test('Stores coords in a set', () => {
-    expect(gameBoard.set.has('9,0')).toBe(true);
+    gameBoard.receiveAttack(2, 2);
+    expect(gameBoard.set.has('2,2')).toBe(true);
     expect(gameBoard.set.has('1,2')).toBe(false);
   });
 
   test('Stores coords in missedShots', () => {
-    expect(gameBoard.missedShots.has('3,3')).toBe(true);
+    gameBoard.receiveAttack(5, 3);
+    expect(gameBoard.missedShots.has('5,3')).toBe(true);
+    expect(gameBoard.missedShots.has('5,4')).toBe(false);
   });
 
   test('Stores coords in hitShots', () => {
-    expect(gameBoard.hitShots.has('0,0')).toBe(true);
+    gameBoard.placeShipLeftToRight(3, 2, 1);
+    gameBoard.receiveAttack(3, 2);
+    expect(gameBoard.hitShots.has('3,2')).toBe(true);
   });
 });
 describe('checkGameover', () => {

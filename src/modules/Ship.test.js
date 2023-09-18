@@ -1,15 +1,22 @@
 import Ship from './Ship';
 
-const ship = new Ship(1);
+let ship;
 
 describe('Ship methods', () => {
-  ship.hit();
+  beforeEach(() => {
+    ship = new Ship(1);
+  });
+
   test('Ship records hits', () => {
+    ship.hit();
     expect(ship.timesHit).toBe(1);
   });
+
   test('Ship is able to sink', () => {
+    ship.hit();
     expect(ship.sank).toBe(true);
   });
+
   test('Ship is the correct type', () => {
     expect(ship.type).toBe('Patrol Boat');
   });

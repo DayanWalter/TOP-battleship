@@ -4,10 +4,9 @@
   "description": "My personal basic project template",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --verbose --watchAll",
     "build": "webpack",
     "watch": "webpack --watch",
-    "testWatch": "jest --watchAll",
     "lint": "eslint 'src/**/*.js'",
     "github-pages": "git subtree push --prefix dist origin gh-pages"
   },
