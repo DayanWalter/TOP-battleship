@@ -64,11 +64,9 @@ class UI {
 
   static attackOnClick(player, computer) {
     const fields = document.querySelectorAll('.empty');
-    console.log(fields);
     fields.forEach((field) => {
       field.addEventListener('click', (e) => {
         const ID = e.target.id;
-        console.log(ID);
         const x = ID.slice(-2, -1);
         const y = ID.slice(-1);
 
@@ -83,6 +81,8 @@ class UI {
       });
     });
   }
+
+  static placeOnDrop() {}
 
   static checkWinner(player, computer) {
     setInterval(() => {
