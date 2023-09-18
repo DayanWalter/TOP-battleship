@@ -24,10 +24,12 @@ class UI {
     grid.innerHTML = '';
 
     for (let i = 0; i <= 9; i += 1) {
-      const row = document.createElement('tr');
+      const row = document.createElement('div');
+      row.setAttribute('class', 'row');
       for (let j = 0; j <= 9; j += 1) {
-        const cell = document.createElement('td');
+        const cell = document.createElement('div');
         cell.setAttribute('id', `${id}${i}${j}`);
+        cell.setAttribute('class', 'empty');
 
         // if board[index][index] is !0, set innerHTML to .value of object
         if (board[i][j] !== 0) {
@@ -35,7 +37,7 @@ class UI {
         }
         // if board[index][index] is 0, set innerHtml to 0
         if (board[i][j] === 0) {
-          cell.innerHTML = 0;
+          // cell.innerHTML = 0;
         }
         if (board[i][j] === 'x') {
           cell.innerHTML = 'XXX';

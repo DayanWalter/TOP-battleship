@@ -18,10 +18,9 @@ function game() {
   computer.placeStaticRandom();
 
   // display boards in html
-  UI.displayInHtml(player, computer);
-
+  // UI.displayInHtml(player, computer);
   // check for winner
-  UI.checkWinner(player, computer);
+  // UI.checkWinner(player, computer);
 }
 
 export default game;

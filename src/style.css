@@ -12,5 +12,61 @@ table {
 td {
   width: 30px;
   height: 30px;
+  border: 1px solid rgb(222, 83, 108);
+}
+.fill {
+  /* position: relative; */
+  height: 150px;
+  width: 150px;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+.hold {
+  border: 10px solid red;
+}
+.empty {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgb(222, 83, 108);
+  background: white;
+}
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
+.invisible {
+  display: none;
+}
+
+.shipcontainer {
+  display: flex;
+
   border: 1px solid black;
+}
+.ship {
+  background-color: yellow;
+  /* border: 1px solid black; */
+  height: 25px;
+}
+.carrier {
+  width: 150px;
+  background-color: aquamarine;
+}
+.battleship {
+  width: 120px;
+  background-color: aqua;
+}
+.submarine {
+  width: 90px;
+  background-color: blue;
+}
+.cruiser {
+  width: 60px;
+  background-color: blueviolet;
+}
+.patrolboat {
+  width: 30px;
+  background-color: cadetblue;
 }
