@@ -21,27 +21,38 @@ class UI {
     const grid = document.getElementById(`${id}`);
     grid.innerHTML = '';
 
-    for (let i = 0; i <= 9; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const row = document.createElement('div');
       row.setAttribute('class', 'row');
-      for (let j = 0; j <= 9; j += 1) {
+
+      for (let j = 0; j < 10; j += 1) {
         const cell = document.createElement('div');
         cell.setAttribute('id', `${id}${i}${j}`);
         cell.setAttribute('class', 'empty');
+        const target = board[i][j];
 
-        // if board[index][index] is !0, set innerHTML to .value of object
-        if (board[i][j] !== 0) {
-          cell.innerHTML = board[i][j].value;
+        if (
+          typeof target === 'object' &&
+          !Array.isArray(target) &&
+          target !== null
+        ) {
+          // console.log('ship');
+          cell.innerHTML = target.length;
         }
-        // if board[index][index] is 0, set innerHtml to 0
-        if (board[i][j].length === 0) {
-          // cell.innerHTML = 0;
+
+        if (target === 'hit') {
+          // console.log('hit');
+          cell.innerHTML = 'SH!';
         }
-        if (board[i][j] === 'missed') {
-          cell.innerHTML = 'XXX';
+
+        if (target === 'missed') {
+          // console.log('missed');
+          cell.innerHTML = 'M';
         }
-        if (board[i][j] === 'hit') {
-          cell.innerHTML = 'HIT';
+
+        if (target.length === 0) {
+          // console.log('empty');
+          cell.innerHTML = '';
         }
 
         row.append(cell);
@@ -52,11 +63,12 @@ class UI {
   }
 
   static attackOnClick(player, computer) {
-    const fields = document.querySelectorAll('td');
+    const fields = document.querySelectorAll('.empty');
+    console.log(fields);
     fields.forEach((field) => {
       field.addEventListener('click', (e) => {
         const ID = e.target.id;
-
+        console.log(ID);
         const x = ID.slice(-2, -1);
         const y = ID.slice(-1);
 

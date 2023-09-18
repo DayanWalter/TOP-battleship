@@ -48,40 +48,38 @@ class Gameboard {
 
   receiveAttack(x, y) {
     const target = this.grid[x][y];
-    // console.log(
-    //   typeof target === 'object' && !Array.isArray(target) && target !== null
-    // );
-    // console.log(target.length);
-    const coords = `${x},${y}`;
 
+    const coords = `${x},${y}`;
+    if (target === 'missed' || target === 'hit') {
+      console.log('missed or hit');
+      return console.log('ALREADY SHOT AT X!!!');
+    }
     // Field is a ship
     if (
       typeof target === 'object' &&
       !Array.isArray(target) &&
       target !== null
     ) {
+      console.log('ship');
       this.set.add(coords);
       this.hitShots.add(coords);
       // console.log(target);
       target.hit();
       this.grid[x][y] = 'hit';
-    }
-
-    // Field is empty/water
-    if (target.length === 0) {
-      this.set.add(coords);
-      this.missedShots.add(coords);
-
-      this.grid[x][y] = 'missed';
 
       return;
     }
 
-    if (target === 'missed' || target === 'hit') {
-      console.log('ALREADY SHOT AT X!!!');
+    // Field is empty/water
+    if (target.length === 0) {
+      console.log('water');
+      this.set.add(coords);
+      this.missedShots.add(coords);
+
+      this.grid[x][y] = 'missed';
     }
 
-    // console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
+    return console.log(`OOPS SOMETHING ESCAPED - Coords at x:${x}, y:${y}`);
   }
 
   checkGameover() {

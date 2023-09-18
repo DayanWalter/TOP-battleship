@@ -86,30 +86,30 @@ class Player {
 
   placeStatic() {
     this.placeShip(0, 0, 5, 'x');
-    this.placeShip(1, 0, 4, 'x');
-    this.placeShip(2, 0, 4, 'x');
-    this.placeShip(3, 0, 3, 'x');
-    this.placeShip(4, 0, 3, 'x');
-    this.placeShip(5, 0, 3, 'x');
-    this.placeShip(6, 0, 2, 'x');
-    this.placeShip(7, 0, 2, 'x');
-    this.placeShip(8, 0, 2, 'x');
-    this.placeShip(9, 0, 1, 'x');
-    this.placeShip(9, 2, 1, 'x');
+    // this.placeShip(1, 0, 4, 'x');
+    // this.placeShip(2, 0, 4, 'x');
+    // this.placeShip(3, 0, 3, 'x');
+    // this.placeShip(4, 0, 3, 'x');
+    // this.placeShip(5, 0, 3, 'x');
+    // this.placeShip(6, 0, 2, 'x');
+    // this.placeShip(7, 0, 2, 'x');
+    // this.placeShip(8, 0, 2, 'x');
+    // this.placeShip(9, 0, 1, 'x');
+    // this.placeShip(9, 2, 1, 'x');
   }
 
   placeStaticRandom() {
-    this.placeShip(0, 5, 5, 'x');
-    this.placeShip(1, 5, 4, 'x');
-    this.placeShip(2, 5, 4, 'x');
-    this.placeShip(3, 5, 3, 'x');
-    this.placeShip(4, 5, 3, 'x');
-    this.placeShip(5, 5, 3, 'x');
-    this.placeShip(6, 5, 2, 'x');
-    this.placeShip(7, 5, 2, 'x');
-    this.placeShip(8, 5, 2, 'x');
-    this.placeShip(9, 5, 1, 'x');
-    this.placeShip(9, 7, 1, 'x');
+    // this.placeShip(0, 5, 5, 'x');
+    // this.placeShip(1, 5, 4, 'x');
+    // this.placeShip(2, 5, 4, 'x');
+    // this.placeShip(3, 5, 3, 'x');
+    // this.placeShip(4, 5, 3, 'x');
+    // this.placeShip(5, 5, 3, 'x');
+    // this.placeShip(6, 5, 2, 'x');
+    // this.placeShip(7, 5, 2, 'x');
+    // this.placeShip(8, 5, 2, 'x');
+    // this.placeShip(9, 5, 1, 'x');
+    // this.placeShip(9, 7, 1, 'x');
   }
 }
 

@@ -18,8 +18,6 @@ class Ship {
     // 30 fields in total
   };
 
-  value = 1;
-
   timesHit = 0;
 
   sank = false;
