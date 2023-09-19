@@ -43,7 +43,22 @@ class UI {
           !Array.isArray(target) &&
           target !== null
         ) {
-          // console.log('ship');
+          if (target.length === 5) {
+            cell.classList.add('aquamarine');
+          }
+          if (target.length === 4) {
+            cell.classList.add('aqua');
+          }
+          if (target.length === 3) {
+            cell.classList.add('blue');
+          }
+          if (target.length === 2) {
+            cell.classList.add('blueviolet');
+          }
+          if (target.length === 1) {
+            cell.classList.add('cadetblue');
+          }
+
           cell.innerHTML = target.length;
         }
 
@@ -70,7 +85,7 @@ class UI {
   }
 
   static attackOnClick(player, computer) {
-    const fields = document.querySelectorAll('.empty');
+    const fields = document.querySelectorAll('.computerempty');
     fields.forEach((field) => {
       field.addEventListener('click', (e) => {
         const ID = e.target.id;
@@ -97,32 +112,26 @@ class UI {
 
     // ship
     function dragStart(e) {
+      e.dataTransfer.clearData();
       e.dataTransfer.setData('text', e.target.dataset.length);
-      console.log(length);
-      // console.log(e.target.dataset.length);
 
       console.log('start');
 
-      this.className += ' hold';
+      // this.className += ' hold';
       setTimeout(() => (this.className = 'invisible'), 0);
     }
 
-    function dragEnd(e) {
-      console.log('end');
-      console.log(e);
-      this.className = 'fill ship';
+    function dragEnd() {
+      // this.className = 'fill ship';
       UI.displayInHtml(player, computer);
     }
 
-    // droppable
     function dragOver(e) {
       e.preventDefault();
-      // console.log('over');
     }
 
     function dragEnter(e) {
       e.preventDefault();
-      // console.log('enter');
 
       this.className += ' hovered';
     }
@@ -134,27 +143,16 @@ class UI {
 
     function dragDrop(e) {
       console.log('drop');
-      const length = e.dataTransfer.getData('text');
+      const length = +e.dataTransfer.getData('text');
 
       this.className = 'empty';
-      // ship is appended to specific field(this)
-      // (removes ship from container)
-      // this.append(fill);
       const ID = this.id;
-      // console.log(typeof ID);
       const x = +ID.slice(-2, -1);
       const y = +ID.slice(-1);
-      // console.log(`x:${x}`);
-      // console.log(`y:${y}`);
-      player.placeShip(x, y, length, 'x');
-      // console.log(player.gameboard.grid);
-      // console.log(player);
-    }
-    // Fill listeners
-    // fill.addEventListener('dragstart', dragStart);
-    // fill.addEventListener('dragend', dragEnd);
 
-    // Loop through empty boxes and add listeners
+      player.placeShip(x, y, length, 'x');
+    }
+
     boxes.forEach((box) => {
       box.addEventListener('dragover', dragOver);
       box.addEventListener('dragenter', dragEnter);
@@ -162,10 +160,6 @@ class UI {
       box.addEventListener('drop', dragDrop);
     });
 
-    // fill.forEach((ship) => {
-    //   ship.addEventListener('dragstart', dragStart);
-    //   ship.addEventListener('dragend', dragEnd);
-    // });
     ships.forEach((ship) => {
       if (!ship.hasEventlistener) {
         ship.addEventListener('dragstart', dragStart);

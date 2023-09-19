@@ -24,6 +24,7 @@ td {
 }
 .hold {
   border: 2px solid red;
+  height: 40px;
 }
 #playerBoard,
 #computerBoard {
@@ -42,6 +43,23 @@ td {
   border: 1px solid rgb(222, 83, 108);
   background: white;
 }
+
+.aquamarine {
+  background-color: aquamarine;
+}
+.aqua {
+  background-color: aqua;
+}
+.blue {
+  background-color: blue;
+}
+.blueviolet {
+  background-color: blueviolet;
+}
+.cadetblue {
+  background-color: cadetblue;
+}
+
 .hovered {
   background: #ff9393;
   border-style: dashed;
@@ -51,32 +69,31 @@ td {
 }
 
 .shipcontainer {
-  display: flex;
+  /* display: flex; */
 
   border: 1px solid black;
 }
 .ship {
-  background-color: yellow;
-  /* border: 1px solid black; */
-  height: 25px;
+  border: 1px solid black;
+  height: 40px;
 }
 .carrier {
-  width: 150px;
+  width: 200px;
   background-color: aquamarine;
 }
 .battleship {
-  width: 120px;
+  width: 160px;
   background-color: aqua;
 }
 .submarine {
-  width: 90px;
+  width: 120px;
   background-color: blue;
 }
 .cruiser {
-  width: 60px;
+  width: 80px;
   background-color: blueviolet;
 }
 .patrolboat {
-  width: 30px;
+  width: 40px;
   background-color: cadetblue;
 }

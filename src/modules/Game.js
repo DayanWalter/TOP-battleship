@@ -12,7 +12,8 @@ function game() {
   // player
   player.placeStatic();
   // computer
-  computer.placeStaticRandom();
+  // computer.placeStaticRandom();
+  computer.placeShipRandom(3);
   // display boards in html
   UI.displayInHtml(player, computer);
 
