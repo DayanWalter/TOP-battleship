@@ -90,27 +90,31 @@ class UI {
   }
 
   static placeShipOnDrop(player, computer) {
-    const fill = document.querySelectorAll('.fill');
-    const empties = document.querySelectorAll('.empty');
+    const ships = document.querySelectorAll('.fill');
+    const boxes = document.querySelectorAll('.empty');
 
     // Drag Functions
 
     // ship
-    function dragStart() {
+    function dragStart(e) {
+      e.dataTransfer.setData('text', e.target.dataset.length);
+      console.log(length);
+      // console.log(e.target.dataset.length);
+
       console.log('start');
-      console.log(this);
 
       this.className += ' hold';
       setTimeout(() => (this.className = 'invisible'), 0);
     }
 
-    function dragEnd() {
+    function dragEnd(e) {
       console.log('end');
+      console.log(e);
       this.className = 'fill ship';
       UI.displayInHtml(player, computer);
     }
 
-    // empties
+    // droppable
     function dragOver(e) {
       e.preventDefault();
       // console.log('over');
@@ -128,8 +132,10 @@ class UI {
       this.className = 'empty';
     }
 
-    function dragDrop() {
+    function dragDrop(e) {
       console.log('drop');
+      const length = e.dataTransfer.getData('text');
+
       this.className = 'empty';
       // ship is appended to specific field(this)
       // (removes ship from container)
@@ -140,7 +146,7 @@ class UI {
       const y = +ID.slice(-1);
       // console.log(`x:${x}`);
       // console.log(`y:${y}`);
-      player.placeShip(x, y, 2, 'x');
+      player.placeShip(x, y, length, 'x');
       // console.log(player.gameboard.grid);
       // console.log(player);
     }
@@ -149,18 +155,18 @@ class UI {
     // fill.addEventListener('dragend', dragEnd);
 
     // Loop through empty boxes and add listeners
-    empties.forEach((empty) => {
-      empty.addEventListener('dragover', dragOver);
-      empty.addEventListener('dragenter', dragEnter);
-      empty.addEventListener('dragleave', dragLeave);
-      empty.addEventListener('drop', dragDrop);
+    boxes.forEach((box) => {
+      box.addEventListener('dragover', dragOver);
+      box.addEventListener('dragenter', dragEnter);
+      box.addEventListener('dragleave', dragLeave);
+      box.addEventListener('drop', dragDrop);
     });
 
     // fill.forEach((ship) => {
     //   ship.addEventListener('dragstart', dragStart);
     //   ship.addEventListener('dragend', dragEnd);
     // });
-    fill.forEach((ship) => {
+    ships.forEach((ship) => {
       if (!ship.hasEventlistener) {
         ship.addEventListener('dragstart', dragStart);
         ship.addEventListener('dragend', dragEnd);
