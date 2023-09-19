@@ -15,6 +15,8 @@ function game() {
   computer.placeStaticRandom();
   // display boards in html
   UI.displayInHtml(player, computer);
+
+  UI.placeShipOnDrop(player, computer);
   // check for winner
   // UI.checkWinner(player, computer);
 }

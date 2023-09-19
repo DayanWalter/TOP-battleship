@@ -33,6 +33,8 @@ class Gameboard {
 
     // place ship horizontally from left to right
     for (let i = 0; i < length; i += 1) {
+      console.log(`x in function:${x}
+      y in function: ${y + i}`);
       this.grid[x][y + i] = ship;
     }
   }
