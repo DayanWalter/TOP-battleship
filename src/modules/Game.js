@@ -14,9 +14,17 @@ function game() {
   // computer
   // computer.placeStaticRandom();
   computer.placeShipRandom(5);
-  // computer.placeShipRandom(5);
-  // computer.placeShipRandom(5);
-  // computer.placeShipRandom(5);
+  computer.placeShipRandom(4);
+  computer.placeShipRandom(4);
+
+  computer.placeShipRandom(3);
+  computer.placeShipRandom(3);
+  computer.placeShipRandom(3);
+  computer.placeShipRandom(2);
+  computer.placeShipRandom(2);
+  computer.placeShipRandom(2);
+  computer.placeShipRandom(1);
+  computer.placeShipRandom(1);
 
   // display boards in html
   UI.displayInHtml(player, computer);

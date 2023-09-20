@@ -40,10 +40,6 @@ class Gameboard {
       this.grid[x][y + i] = ship;
       this.placedShips.add(`${x},${y + i}`);
     }
-    console.log(
-      '🚀 ~ file: Gameboard.js:43 ~ Gameboard ~ placeShipLeftToRight ~ this.placedShips:',
-      this.placedShips
-    );
   }
 
   placeShipUpToDown(x, y, length) {

@@ -82,42 +82,61 @@ class Player {
     // // const random = Math.floor(Math.random() * 2);
     const random = 1;
     if (random === 1) {
-      // do{
       let x = 0;
       let y = 0;
-      const first = new Set();
-      const second = new Set();
-      // second.add(`${x},${y}`);
-      second.add(`0,5`);
-      second.add(`0,6`);
-      second.add(`0,7`);
-      second.add(`0,8`);
-      second.add(`0,9`);
-
+      const { placedShips } = this.gameboard;
       console.log(
-        '🚀 ~ file: Player.js:93 ~ Player ~ placeShipRandom ~ second:',
-        second
+        '🚀 ~ file: Player.js:89 ~ Player ~ placeShipRandom ~ placedShips:',
+        placedShips
       );
+      // placedShips.add(`${x},${y}`);
+
       // const start = Date.now();
-      do {
+      while (true) {
+        const first = new Set();
+        let nothingFound;
+        let oneInSet;
+
+        // x = Math.floor(Math.random() * 10);
         x = Math.floor(Math.random() * 10);
-        console.log(
-          '🚀 ~ file: Player.js:107 ~ Player ~ placeShipRandom ~ x:',
-          x
-        );
         y = Math.floor(Math.random() * (10 - length));
-        console.log(
-          '🚀 ~ file: Player.js:110 ~ Player ~ placeShipRandom ~ y:',
-          y
-        );
-        if (!second.has(`${x},${y}`)) {
-          first.add(`${x},${y}`);
+
+        for (let i = 0; i < length; i += 1) {
+          first.add(`${x},${y + i}`);
         }
         console.log(
-          '🚀 ~ file: Player.js:92 ~ Player ~ placeShipRandom ~ first:',
+          '🚀 ~ file: Player.js:108 ~ Player ~ placeShipRandom ~ first:',
           first
         );
-      } while (first.size !== length);
+        // if (!placedShips.has(`${x},${y}`)) {
+        //   console.log('placedShips has not');
+        // }
+
+        for (const coords of first) {
+          if (placedShips.has(coords)) {
+            console.log(`The coords "${coords}" are in placedShips set.`);
+            nothingFound = false;
+            oneInSet = true;
+            first.clear();
+          } else {
+            console.log('done');
+            nothingFound = true;
+          }
+        }
+        if (nothingFound && !oneInSet) {
+          console.log('schiff kann platziert werden');
+          this.gameboard.placeShipLeftToRight(x, y, length);
+          first.clear();
+          console.log(
+            '🚀 ~ file: Player.js:123 ~ Player ~ placeShipRandom ~ first:',
+            first
+          );
+
+          break;
+          // placeShip at x and y
+        }
+      }
+
       // const end = Date.now();
       // const result = end - start;
       // console.log(
