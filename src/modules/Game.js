@@ -28,7 +28,7 @@ function game() {
 
   // UI.placeShipOnDrop(player, computer);
   // check for winner
-  // UI.checkWinner(player, computer);
+  UI.checkWinner(player, computer);
 }
 
 export default game;

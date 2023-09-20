@@ -88,7 +88,7 @@ class Gameboard {
 
   checkGameover() {
     // check every round?
-    if (this.hitShots.size >= 30) {
+    if (this.hitShots.size >= 2) {
       // the other player won
       return true;
     }

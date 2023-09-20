@@ -38,38 +38,41 @@ class UI {
 
         const target = board[i][j];
 
-        if (
-          typeof target === 'object' &&
-          !Array.isArray(target) &&
-          target !== null
-        ) {
-          if (target.length === 5) {
-            cell.classList.add('aquamarine');
-          }
-          if (target.length === 4) {
-            cell.classList.add('aqua');
-          }
-          if (target.length === 3) {
-            cell.classList.add('blue');
-          }
-          if (target.length === 2) {
-            cell.classList.add('blueviolet');
-          }
-          if (target.length === 1) {
-            cell.classList.add('cadetblue');
-          }
+        if (id === 'playerBoard') {
+          if (
+            typeof target === 'object' &&
+            !Array.isArray(target) &&
+            target !== null
+          ) {
+            if (target.length === 5) {
+              cell.classList.add('aquamarine');
+            }
+            if (target.length === 4) {
+              cell.classList.add('aqua');
+            }
+            if (target.length === 3) {
+              cell.classList.add('blue');
+            }
+            if (target.length === 2) {
+              cell.classList.add('blueviolet');
+            }
+            if (target.length === 1) {
+              cell.classList.add('cadetblue');
+            }
 
-          cell.innerHTML = target.length;
+            // cell.innerHTML = target.length;
+          }
         }
-
         if (target === 'hit') {
           // console.log('hit');
-          cell.innerHTML = 'SH!';
+          // cell.innerHTML = 'SH!';
+          cell.style.backgroundColor = 'red';
         }
 
         if (target === 'missed') {
           // console.log('missed');
-          cell.innerHTML = 'M';
+          // cell.innerHTML = 'M';
+          cell.style.backgroundColor = 'yellow';
         }
 
         if (target.length === 0) {
@@ -175,15 +178,21 @@ class UI {
     const button = document.querySelector('#changeDirection');
     button.addEventListener('click', () => {
       const ships = document.querySelectorAll('.ship');
+      const shipContainer = document.getElementById('ships');
+
       ships.forEach((ship) => {
         if (ship.dataset.orientation === 'x') {
           button.innerText = 'Switch to X';
+          shipContainer.className = 'rotate';
 
           ship.setAttribute('data-orientation', 'y');
+          // add class with new direction
         } else {
           button.innerText = 'Switch to Y';
+          shipContainer.className = 'ships';
 
           ship.setAttribute('data-orientation', 'x');
+          // add class with new direction
         }
 
         console.log(ship.dataset.orientation);
@@ -195,10 +204,10 @@ class UI {
   static checkWinner(player, computer) {
     setInterval(() => {
       if (player.gameboard.checkGameover()) {
-        console.log('Computer won!');
+        alert('Computer won!');
       }
       if (computer.gameboard.checkGameover()) {
-        console.log('Player won!');
+        alert('Player won!');
       }
     }, 1000);
   }
