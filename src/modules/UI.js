@@ -38,31 +38,31 @@ class UI {
 
         const target = board[i][j];
 
-        if (id === 'playerBoard') {
-          if (
-            typeof target === 'object' &&
-            !Array.isArray(target) &&
-            target !== null
-          ) {
-            if (target.length === 5) {
-              cell.classList.add('aquamarine');
-            }
-            if (target.length === 4) {
-              cell.classList.add('aqua');
-            }
-            if (target.length === 3) {
-              cell.classList.add('blue');
-            }
-            if (target.length === 2) {
-              cell.classList.add('blueviolet');
-            }
-            if (target.length === 1) {
-              cell.classList.add('cadetblue');
-            }
-
-            // cell.innerHTML = target.length;
+        // if (id === 'playerBoard') {
+        if (
+          typeof target === 'object' &&
+          !Array.isArray(target) &&
+          target !== null
+        ) {
+          if (target.length === 5) {
+            cell.classList.add('aquamarine');
           }
+          if (target.length === 4) {
+            cell.classList.add('aqua');
+          }
+          if (target.length === 3) {
+            cell.classList.add('blue');
+          }
+          if (target.length === 2) {
+            cell.classList.add('blueviolet');
+          }
+          if (target.length === 1) {
+            cell.classList.add('cadetblue');
+          }
+
+          // cell.innerHTML = target.length;
         }
+        // }
         if (target === 'hit') {
           // console.log('hit');
           // cell.innerHTML = 'SH!';
@@ -96,13 +96,10 @@ class UI {
         const y = ID.slice(-1);
 
         player.attack(x, y);
-        UI.displayInHtml(player, computer);
+        // UI.displayInHtml(player, computer);
 
         // Timeout for later :)
-        // setTimeout(() => {
-        //   console.log('Delayed for 1 second.');
-        //   UI.displayInHtml(player, computer);
-        // }, 1000);
+        UI.displayInHtml(player, computer);
       });
     });
   }
@@ -118,7 +115,6 @@ class UI {
       e.dataTransfer.clearData();
       e.dataTransfer.setData('length', e.target.dataset.length);
       e.dataTransfer.setData('orientation', e.target.dataset.orientation);
-      console.log('start');
 
       // this.className += ' hold';
       setTimeout(() => (this.className = 'invisible'), 0);
@@ -145,10 +141,8 @@ class UI {
     }
 
     function dragDrop(e) {
-      console.log('drop');
       const length = +e.dataTransfer.getData('length');
       const orientation = e.dataTransfer.getData('orientation');
-      console.log(orientation);
 
       this.className = 'empty';
       const ID = this.id;

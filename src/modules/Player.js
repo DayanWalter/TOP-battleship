@@ -28,9 +28,10 @@ class Player {
 
     // if attack was a missedShot...
     if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
-      console.log(`${this.name} missed at ${x},${y}`);
       // ...computer attacks
-      this.opponent.attackRandom();
+      setTimeout(() => {
+        this.opponent.attackRandom();
+      }, 1000);
     }
   }
 
@@ -42,15 +43,15 @@ class Player {
     // if coords not in set...
     if (!this.opponent.gameboard.set.has(`${x},${y}`)) {
       // ...attack player
-      console.log(`${this.name} attacks ${x}, ${y}`);
+      // setTimeout(() => {
       this.opponent.gameboard.receiveAttack(x, y);
+      // }, 1200);
       // if hit...
       if (this.opponent.gameboard.hitShots.has(`${x},${y}`)) {
-        console.log(`${this.name} hit at ${x},${y}`);
-
         // ...attack again
-
+        // setTimeout(() => {
         this.attackRandom();
+        // }, 1000);
       }
 
       // if missed...

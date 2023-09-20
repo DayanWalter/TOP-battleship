@@ -67,6 +67,10 @@ class Gameboard {
     ) {
       this.set.add(coords);
       this.hitShots.add(coords);
+      console.log(
+        '🚀 ~ file: Gameboard.js:70 ~ Gameboard ~ receiveAttack ~ this.hitShots:',
+        this.hitShots
+      );
       // console.log(target);
       target.hit();
       this.grid[x][y] = 'hit';
@@ -88,7 +92,11 @@ class Gameboard {
 
   checkGameover() {
     // check every round?
-    if (this.hitShots.size >= 30) {
+    if (this.hitShots.size >= 10) {
+      console.log(
+        '🚀 ~ file: Gameboard.js:92 ~ Gameboard ~ checkGameover ~ this.hitShots:',
+        this.hitShots
+      );
       // the other player won
       return true;
     }
