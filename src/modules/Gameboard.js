@@ -7,6 +7,8 @@ class Gameboard {
 
   missedShots = new Set();
 
+  placedShips = new Set();
+
   hitShots = new Set();
 
   static createGrid() {
@@ -36,7 +38,12 @@ class Gameboard {
       // console.log(`x in function:${x}
       // y in function: ${y + i}`);
       this.grid[x][y + i] = ship;
+      this.placedShips.add(`${x},${y + i}`);
     }
+    console.log(
+      '🚀 ~ file: Gameboard.js:43 ~ Gameboard ~ placeShipLeftToRight ~ this.placedShips:',
+      this.placedShips
+    );
   }
 
   placeShipUpToDown(x, y, length) {
@@ -45,6 +52,12 @@ class Gameboard {
     // place ship vertically from up to down
     for (let i = 0; i < length; i += 1) {
       this.grid[x + i][y] = ship;
+      this.placedShips.add(`${x + i},${y}`);
+
+      console.log(
+        '🚀 ~ file: Gameboard.js:54 ~ Gameboard ~ placeShipUpToDown ~ this.placedShips:',
+        this.placedShips
+      );
     }
   }
 

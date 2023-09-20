@@ -79,20 +79,78 @@ class Player {
   }
 
   placeShipRandom(length) {
-    const random = Math.floor(Math.random() * 2);
-
+    // // const random = Math.floor(Math.random() * 2);
+    const random = 1;
     if (random === 1) {
-      const o = 'x';
-      const x = Math.floor(Math.random() * 10);
-      const y = Math.floor(Math.random() * (10 - length));
+      // do{
+      let x = 0;
+      let y = 0;
+      const first = new Set();
+      const second = new Set();
+      // second.add(`${x},${y}`);
+      second.add(`0,5`);
+      second.add(`0,6`);
+      second.add(`0,7`);
+      second.add(`0,8`);
+      second.add(`0,9`);
 
-      this.placeShip(x, y, length, o);
-    } else if (random === 0) {
-      const o = 'y';
-      const x = Math.floor(Math.random() * (10 - length));
-      const y = Math.floor(Math.random() * 10);
+      console.log(
+        '🚀 ~ file: Player.js:93 ~ Player ~ placeShipRandom ~ second:',
+        second
+      );
+      // const start = Date.now();
+      do {
+        x = Math.floor(Math.random() * 10);
+        console.log(
+          '🚀 ~ file: Player.js:107 ~ Player ~ placeShipRandom ~ x:',
+          x
+        );
+        y = Math.floor(Math.random() * (10 - length));
+        console.log(
+          '🚀 ~ file: Player.js:110 ~ Player ~ placeShipRandom ~ y:',
+          y
+        );
+        if (!second.has(`${x},${y}`)) {
+          first.add(`${x},${y}`);
+        }
+        console.log(
+          '🚀 ~ file: Player.js:92 ~ Player ~ placeShipRandom ~ first:',
+          first
+        );
+      } while (first.size !== length);
+      // const end = Date.now();
+      // const result = end - start;
+      // console.log(
+      //   '🚀 ~ file: Player.js:123 ~ Player ~ placeShipRandom ~ result:',
+      //   result
+      // );
 
-      this.placeShip(x, y, length, o);
+      // ![...first].every((value) => second.has(value)
+      // generate x and y
+      // }while(
+      // check if x and y + length !== in placeShip, )
+      // if they are NOT: placeShip
+      // ELSE
+      // generate new x and y + length and check again...
+      // generate and check as long as the result is NOT in placeship
+      // const o = 'x';
+      // const x = Math.floor(Math.random() * 10);
+      // const x = 6;
+      // const y = Math.floor(Math.random() * (10 - length));
+      // const y = 0;
+      // if x and y + length !== in placeShip, placeShip
+      // for (let i = 0; i < length; i += 1) {
+      //   this.gameboard.placedShips.add(`${x},${y + i}`);
+      //   console.log(this.gameboard.placedShips);
+      // if ()) {
+      // }
+      // }
+      // this.placeShip(x, y, length, o);
+      // } else if (random === 0) {
+      //   const o = 'y';
+      //   const x = Math.floor(Math.random() * (10 - length));
+      //   const y = Math.floor(Math.random() * 10);
+      //   this.placeShip(x, y, length, o);
     }
   }
 
