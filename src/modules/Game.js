@@ -10,13 +10,12 @@ function game() {
   computer.setOpponent(player);
   // let the player place the ships(static at first)
   // player
-  player.placeStatic();
+  // player.placeStatic();
   // computer
   // computer.placeStaticRandom();
   computer.placeShipRandom(5);
   computer.placeShipRandom(4);
   computer.placeShipRandom(4);
-
   computer.placeShipRandom(3);
   computer.placeShipRandom(3);
   computer.placeShipRandom(3);

@@ -47,6 +47,8 @@ class Gameboard {
 
     // place ship vertically from up to down
     for (let i = 0; i < length; i += 1) {
+      console.log(`x in function:${x + i}
+      y in function: ${y}`);
       this.grid[x + i][y] = ship;
       this.placedShips.add(`${x + i},${y}`);
 

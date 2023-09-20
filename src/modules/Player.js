@@ -79,126 +79,75 @@ class Player {
   }
 
   placeShipRandom(length) {
-    // // const random = Math.floor(Math.random() * 2);
-    const random = 1;
+    const random = Math.floor(Math.random() * 2);
+
     if (random === 1) {
+      const o = 'x';
       let x = 0;
       let y = 0;
       const { placedShips } = this.gameboard;
-      console.log(
-        '🚀 ~ file: Player.js:89 ~ Player ~ placeShipRandom ~ placedShips:',
-        placedShips
-      );
-      // placedShips.add(`${x},${y}`);
-
-      // const start = Date.now();
       while (true) {
-        const first = new Set();
+        const temp = new Set();
         let nothingFound;
         let oneInSet;
 
-        // x = Math.floor(Math.random() * 10);
         x = Math.floor(Math.random() * 10);
         y = Math.floor(Math.random() * (10 - length));
 
         for (let i = 0; i < length; i += 1) {
-          first.add(`${x},${y + i}`);
+          temp.add(`${x},${y + i}`);
         }
-        console.log(
-          '🚀 ~ file: Player.js:108 ~ Player ~ placeShipRandom ~ first:',
-          first
-        );
-        // if (!placedShips.has(`${x},${y}`)) {
-        //   console.log('placedShips has not');
-        // }
 
-        for (const coords of first) {
+        for (const coords of temp) {
+          if (placedShips.has(coords)) {
+            nothingFound = false;
+            oneInSet = true;
+            temp.clear();
+          } else {
+            nothingFound = true;
+          }
+        }
+        if (nothingFound && !oneInSet) {
+          this.placeShip(x, y, length, o);
+          first.clear();
+          break;
+        }
+      }
+    } else if (random === 0) {
+      const o = 'y';
+      let x = 0;
+      let y = 0;
+      const { placedShips } = this.gameboard;
+      while (true) {
+        const temp = new Set();
+        let nothingFound;
+        let oneInSet;
+
+        x = Math.floor(Math.random() * (10 - length));
+        y = Math.floor(Math.random() * 10);
+
+        for (let i = 0; i < length; i += 1) {
+          temp.add(`${x + i},${y}`);
+        }
+
+        for (const coords of temp) {
           if (placedShips.has(coords)) {
             console.log(`The coords "${coords}" are in placedShips set.`);
             nothingFound = false;
             oneInSet = true;
-            first.clear();
+            temp.clear();
           } else {
             console.log('done');
             nothingFound = true;
           }
         }
         if (nothingFound && !oneInSet) {
-          console.log('schiff kann platziert werden');
-          this.gameboard.placeShipLeftToRight(x, y, length);
-          first.clear();
-          console.log(
-            '🚀 ~ file: Player.js:123 ~ Player ~ placeShipRandom ~ first:',
-            first
-          );
-
+          this.placeShip(x, y, length, o);
+          temp.clear();
           break;
-          // placeShip at x and y
         }
       }
-
-      // const end = Date.now();
-      // const result = end - start;
-      // console.log(
-      //   '🚀 ~ file: Player.js:123 ~ Player ~ placeShipRandom ~ result:',
-      //   result
-      // );
-
-      // ![...first].every((value) => second.has(value)
-      // generate x and y
-      // }while(
-      // check if x and y + length !== in placeShip, )
-      // if they are NOT: placeShip
-      // ELSE
-      // generate new x and y + length and check again...
-      // generate and check as long as the result is NOT in placeship
-      // const o = 'x';
-      // const x = Math.floor(Math.random() * 10);
-      // const x = 6;
-      // const y = Math.floor(Math.random() * (10 - length));
-      // const y = 0;
-      // if x and y + length !== in placeShip, placeShip
-      // for (let i = 0; i < length; i += 1) {
-      //   this.gameboard.placedShips.add(`${x},${y + i}`);
-      //   console.log(this.gameboard.placedShips);
-      // if ()) {
-      // }
-      // }
-      // this.placeShip(x, y, length, o);
-      // } else if (random === 0) {
-      //   const o = 'y';
-      //   const x = Math.floor(Math.random() * (10 - length));
-      //   const y = Math.floor(Math.random() * 10);
-      //   this.placeShip(x, y, length, o);
     }
-  }
-
-  placeStatic() {
-    // this.placeShip(0, 0, 5, 'x');
-    this.placeShip(1, 0, 4, 'x');
-    // this.placeShip(2, 0, 4, 'x');
-    // this.placeShip(3, 0, 3, 'x');
-    // this.placeShip(4, 0, 3, 'x');
-    // this.placeShip(5, 0, 3, 'x');
-    // this.placeShip(6, 0, 2, 'x');
-    // this.placeShip(7, 0, 2, 'x');
-    // this.placeShip(8, 0, 2, 'x');
-    // this.placeShip(9, 0, 1, 'x');
-    // this.placeShip(9, 2, 1, 'x');
-  }
-
-  placeStaticRandom() {
-    this.placeShip(0, 5, 5, 'x');
-    // this.placeShip(1, 5, 4, 'x');
-    // this.placeShip(2, 5, 4, 'x');
-    // this.placeShip(3, 5, 3, 'x');
-    // this.placeShip(4, 5, 3, 'x');
-    // this.placeShip(5, 5, 3, 'x');
-    // this.placeShip(6, 5, 2, 'x');
-    // this.placeShip(7, 5, 2, 'x');
-    // this.placeShip(8, 5, 2, 'x');
-    // this.placeShip(9, 5, 1, 'x');
-    // this.placeShip(9, 7, 1, 'x');
   }
 }
 
