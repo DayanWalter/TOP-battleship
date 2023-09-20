@@ -109,7 +109,7 @@ class Player {
         }
         if (nothingFound && !oneInSet) {
           this.placeShip(x, y, length, o);
-          first.clear();
+          temp.clear();
           break;
         }
       }
