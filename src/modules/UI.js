@@ -171,6 +171,27 @@ class UI {
     });
   }
 
+  static changeDirection() {
+    const button = document.querySelector('#changeDirection');
+    button.addEventListener('click', () => {
+      const ships = document.querySelectorAll('.ship');
+      ships.forEach((ship) => {
+        if (ship.dataset.orientation === 'x') {
+          button.innerText = 'Switch to X';
+
+          ship.setAttribute('data-orientation', 'y');
+        } else {
+          button.innerText = 'Switch to Y';
+
+          ship.setAttribute('data-orientation', 'x');
+        }
+
+        console.log(ship.dataset.orientation);
+      });
+      // console.log(ships);
+    });
+  }
+
   static checkWinner(player, computer) {
     setInterval(() => {
       if (player.gameboard.checkGameover()) {

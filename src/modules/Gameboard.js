@@ -47,15 +47,8 @@ class Gameboard {
 
     // place ship vertically from up to down
     for (let i = 0; i < length; i += 1) {
-      console.log(`x in function:${x + i}
-      y in function: ${y}`);
       this.grid[x + i][y] = ship;
       this.placedShips.add(`${x + i},${y}`);
-
-      console.log(
-        '🚀 ~ file: Gameboard.js:54 ~ Gameboard ~ placeShipUpToDown ~ this.placedShips:',
-        this.placedShips
-      );
     }
   }
 
@@ -64,7 +57,6 @@ class Gameboard {
 
     const coords = `${x},${y}`;
     if (target === 'missed' || target === 'hit') {
-      console.log('missed or hit');
       return console.log('ALREADY SHOT AT X!!!');
     }
     // Field is a ship
@@ -73,7 +65,6 @@ class Gameboard {
       !Array.isArray(target) &&
       target !== null
     ) {
-      console.log('ship');
       this.set.add(coords);
       this.hitShots.add(coords);
       // console.log(target);

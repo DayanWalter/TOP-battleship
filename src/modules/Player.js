@@ -132,12 +132,10 @@ class Player {
 
         for (const coords of temp) {
           if (placedShips.has(coords)) {
-            console.log(`The coords "${coords}" are in placedShips set.`);
             nothingFound = false;
             oneInSet = true;
             temp.clear();
           } else {
-            console.log('done');
             nothingFound = true;
           }
         }
