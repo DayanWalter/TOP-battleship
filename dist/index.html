@@ -10,48 +10,67 @@
       rel="stylesheet"
     />
     <title>Battleship</title>
-  <link rel="icon" href="favicon.ico"><script defer src="bundle.0fef3642db1ad2254935.js"></script></head>
+  <link rel="icon" href="favicon.ico"><script defer src="bundle.bd9f62737f0865ed3fce.js"></script></head>
   <body>
     <!-- <h1>h1 in anonymous pro</h1>
     <li>list item in montserrat</li> -->
-    <h1>Player Grid:</h1>
-    <div id="playerBoard"></div>
-    <h1>Computer Grid:</h1>
-    <div id="computerBoard"></div>
-    <div class="shipcontainer">
-      <div class="ship carrier fill" data-length="5" draggable="true">
-        carrier
+    <main>
+      <div class="grids">
+        <h1>Player Grid:</h1>
+        <div id="playerBoard"></div>
+        <h1>Computer Grid:</h1>
+        <div id="computerBoard"></div>
       </div>
-      <div class="ship battleship fill" data-length="4" draggable="true">
-        battleship
+      <div class="shipcontainer">
+        <div class="ships">
+          <div
+            class="ship carrier fill"
+            data-length="5"
+            data-orientation="x"
+            draggable="true"
+          >
+            carrier
+          </div>
+          <div
+            class="ship battleship fill"
+            data-length="4"
+            data-orientation="y"
+            draggable="true"
+          >
+            battleship
+          </div>
+          <div class="ship battleship fill" data-length="4" draggable="true">
+            battleship
+          </div>
+          <div class="ship submarine fill" data-length="3" draggable="true">
+            submarine
+          </div>
+          <div class="ship submarine fill" data-length="3" draggable="true">
+            submarine
+          </div>
+          <div class="ship submarine fill" data-length="3" draggable="true">
+            submarine
+          </div>
+          <div class="ship cruiser fill" data-length="2" draggable="true">
+            cruiser
+          </div>
+          <div class="ship cruiser fill" data-length="2" draggable="true">
+            cruiser
+          </div>
+          <div class="ship cruiser fill" data-length="2" draggable="true">
+            cruiser
+          </div>
+          <div class="ship patrolboat fill" data-length="1" draggable="true">
+            patrolboat
+          </div>
+          <div class="ship patrolboat fill" data-length="1" draggable="true">
+            patrolboat
+          </div>
+        </div>
+        <div class="switch">
+          <button>Switch axis</button>
+        </div>
       </div>
-      <div class="ship battleship fill" data-length="4" draggable="true">
-        battleship
-      </div>
-      <div class="ship submarine fill" data-length="3" draggable="true">
-        submarine
-      </div>
-      <div class="ship submarine fill" data-length="3" draggable="true">
-        submarine
-      </div>
-      <div class="ship submarine fill" data-length="3" draggable="true">
-        submarine
-      </div>
-      <div class="ship cruiser fill" data-length="2" draggable="true">
-        cruiser
-      </div>
-      <div class="ship cruiser fill" data-length="2" draggable="true">
-        cruiser
-      </div>
-      <div class="ship cruiser fill" data-length="2" draggable="true">
-        cruiser
-      </div>
-      <div class="ship patrolboat fill" data-length="1" draggable="true">
-        patrolboat
-      </div>
-      <div class="ship patrolboat fill" data-length="1" draggable="true">
-        patrolboat
-      </div>
-    </div>
+    </main>
   </body>
 </html>

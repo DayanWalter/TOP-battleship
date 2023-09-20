@@ -113,8 +113,8 @@ class UI {
     // ship
     function dragStart(e) {
       e.dataTransfer.clearData();
-      e.dataTransfer.setData('text', e.target.dataset.length);
-
+      e.dataTransfer.setData('length', e.target.dataset.length);
+      e.dataTransfer.setData('orientation', e.target.dataset.orientation);
       console.log('start');
 
       // this.className += ' hold';
@@ -143,14 +143,16 @@ class UI {
 
     function dragDrop(e) {
       console.log('drop');
-      const length = +e.dataTransfer.getData('text');
+      const length = +e.dataTransfer.getData('length');
+      const orientation = e.dataTransfer.getData('orientation');
+      console.log(orientation);
 
       this.className = 'empty';
       const ID = this.id;
       const x = +ID.slice(-2, -1);
       const y = +ID.slice(-1);
 
-      player.placeShip(x, y, length, 'x');
+      player.placeShip(x, y, length, orientation);
     }
 
     boxes.forEach((box) => {
