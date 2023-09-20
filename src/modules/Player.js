@@ -29,9 +29,7 @@ class Player {
     // if attack was a missedShot...
     if (this.opponent.gameboard.missedShots.has(`${x},${y}`)) {
       // ...computer attacks
-      setTimeout(() => {
-        this.opponent.attackRandom();
-      }, 1000);
+      this.opponent.attackRandom();
     }
   }
 
